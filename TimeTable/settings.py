@@ -161,7 +161,7 @@ LOGIN_REDIRECT_URL = "hme"
 
 #prod_db  =  dj_database_url.config(conn_max_age=500)
 ## This should already be in your settings.py
-django_heroku.settings(locals())
+#django_heroku.settings(locals())
 # This is new
 options = DATABASES['default'].get('OPTIONS', {})
 options.pop('sslmode', None)
