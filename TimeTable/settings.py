@@ -10,12 +10,15 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.2/ref/settings/
 """
 
+import dotenv
 from pathlib import Path
 import dj_database_url
 import os
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-
+dotenv_file = os.path.join(BASE_DIR, ".env")
+if os.path.isfile(dotenv_file):
+    dotenv.load_dotenv(dotenv_file)
 #BASE_DIR = Path(__file__).resolve().parent.parent
 
 
@@ -80,7 +83,7 @@ WSGI_APPLICATION = 'TimeTable.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
-DATABASES = {
+'''DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
@@ -89,9 +92,9 @@ DATABASES = {
         'PASSSWORD': 'system',
         'PORT': ''
     }
-}
-
-
+}'''
+DATABASES = {}
+DATABASES['default'] = dj_database_url.config(conn_max_age=600)
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators
 
@@ -130,6 +133,7 @@ USE_TZ = True
 PROJECT_ROOT   =   os.path.join(os.path.abspath(__file__))
 STATIC_URL = '/static/'
 STATIC_ROOT=os.path.join(BASE_DIR,'staticfiles')
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 # Extra lookup directories for collectstatic to find static files
 STATICFILES_DIRS = (
@@ -137,7 +141,6 @@ STATICFILES_DIRS = (
 )
 
 #  Add configuration for static files storage using whitenoise
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 LOGIN_URL = "lg"
@@ -147,5 +150,9 @@ LOGIN_REDIRECT_URL = "hme"
 # Configure Django App for Heroku.
 
 
-prod_db  =  dj_database_url.config(conn_max_age=500)
-DATABASES['default'].update(prod_db)
+#prod_db  =  dj_database_url.config(conn_max_age=500)
+## This should already be in your settings.py
+django_heroku.settings(locals())
+# This is new
+options = DATABASES['default'].get('OPTIONS', {})
+options.pop('sslmode', None)
