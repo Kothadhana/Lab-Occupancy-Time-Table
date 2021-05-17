@@ -1,0 +1,66 @@
+{% extends 'demo/base.html' %}
+{% block title %} Update {% endblock %}
+
+{% block content %}
+<div class="container-fluid  bg-primary pt-5">
+  <h3 class="color-white"  style="text-align: center">Update {{form.lab_name}} Lab Time Table</h3>
+  <div class="card col-md-8 mx-auto mt-5 px-5 py-5">
+    <form action="{% url 'update' form.id %}" method="post">
+    {% csrf_token %}
+    <div class="form-group">
+    <label for="lab_name">Lab Name </label>
+    <input id="lab_name" class="form-control" type="text" name="lab_name" placeholder="Enter Lab Name" value="{{form.lab_name}}" >
+  </div>
+  <div class="form-group">
+    <label for="systems">No. of Systems</label>
+    <input id="systems" class="form-control" type="text" name="systems"  placeholder="Systems" value="{{form.systems}}">
+  </div>
+  <div class="form-group">
+    <label for="Monday">Monday: </label>
+    <input id="monm" class="form-control" type="text" name="monm" placeholder="Morning" value="{{form.monm}}">
+    <br/>
+    <input id="mone" class="form-control" type="text" name="mone" value="{{form.mone}}"  placeholder="Evening">
+  </div>
+
+  <div class="form-group">
+    <label for="Tuesday">Tuesday: </label>
+    <input id="tuem" class="form-control" type="text" name="tuem"placeholder="Morning"  value="{{form.tuem}}">
+    <br>
+    <input id="tuee" class="form-control" type="text" name="tuee" value="{{form.tuee}}"  placeholder="Evening">
+  </div>
+
+  <div class="form-group">
+    <label for="Wednesday">Wednesday:</label>
+    <input id="wedm" class="form-control" type="text" name="wedm" placeholder="Morning"  value="{{form.wedm}}">
+    <br>
+    <input id="wede" class="form-control" type="text" name="wede" value="{{form.wede}}" placeholder="Evening">
+  </div>
+
+  <div class="form-group">
+    <label for="Thursday">Thursday: </label>
+    <input id="thum" class="form-control" type="text" name="thum" placeholder="Morning" value="{{form.thum}}">
+    <br>
+    <input id="thue" class="form-control" type="text" name="thue" value="{{form.thue}}" placeholder="Evening">
+  </div>
+
+  <div class="form-group">
+    <label for="Friday">Friday: </label>
+    <input id="frim" class="form-control" type="text" name="frim" placeholder="Morning" value="{{form.frim}}">
+    <br>
+    <input id="frie" class="form-control" type="text" name="frie" value="{{for.frie}}" placeholder="Evening">
+  </div>
+
+  <div class="form-group">
+    <label for="Saturday">Saturday: </label>
+    <input id="satm" class="form-control" type="text" name="satm" placeholder="Morning" value="{{form.satm}}">
+    <br>
+    <input id="sate" class="form-control" type="text" name="sate" value="{{form.sate}}"  placeholder="Evening">
+
+  </div>
+
+  <button type="submit" class="form-control btn btn-primary">UPDATE</button>
+
+</form>
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,14 @@
+{% extends 'demo/base.html' %}
+{% block title %} Home {% endblock %}
+
+{% block content %}
+<div class="container">
+  {% for form in forms %}
+  <div class="jumbotron col-md-6 mx-auto mt-5 bg-primary" style="text-align:center">
+
+    <h2 ><a href="{% url 'slct' form.id %}" class="color-white">{{form.lab_name}}</a></h2>
+
+  </div>
+  {% endfor %}
+</div>
+{% endblock %}

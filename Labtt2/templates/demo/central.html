@@ -1,0 +1,106 @@
+{% extends 'demo/base.html' %}
+{% block title %} CentralTimeTable {% endblock %}
+
+{% block content %}
+<div class="container-fluid .mt-5">
+  <div class="mx-auto">
+    <div class="table-responsive table-primary" >
+    <table class="table" style="text-align:center">
+    <thead>
+      <tr class="bg-primary .color-white">
+        <th scope="col" >S.No</th>
+        <th scope="col" >Name Of the Lab</th>
+        <th scope="col">No. Of Systems</th>
+        <th scope="col" colspan="2">Monday</th>
+        <th scope="col" colspan="2">Tuesday</th>
+        <th scope="col" colspan="2">Wednesday</th>
+        <th scope="col" colspan="2">Thursday</th>
+        <th scope="col" colspan="2">Friday</th>
+        <th scope="col" colspan="2">Saturday</th>
+        <th scope="col"></th>
+        <th scope="col"></th>
+      </tr>
+      <tr class="bg-primary .color-white">
+        <th scope="col" colspan="3"></th>
+        <th scope="col">AM</th>
+        <th scope="col">PM</th>
+        <th scope="col">AM</th>
+        <th scope="col">PM</th>
+        <th scope="col">AM</th>
+        <th scope="col">PM</th>
+        <th scope="col">AM</th>
+        <th scope="col">PM</th>
+        <th scope="col">AM</th>
+        <th scope="col">PM</th>
+        <th scope="col">AM</th>
+        <th scope="col">PM</th>
+        <th scope="col">UPDATE</th>
+        <th scope="col">DELETE</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for form in forms %}
+      <tr class="table-primary">
+        <th scope="row" class="bg-primary">{{forloop.counter}}</th>
+        <td><a href="{% url 'slct' form.id %}" class="fontstyle">{{form.lab_name}}</a></td>
+        <td>{{form.systems}}</td>
+        <td>{{form.monm}}</td>
+        <td>{{form.mone}}</td>
+        <td>{{form.tuem}}</td>
+        <td>{{form.tuee}}</td>
+        <td>{{form.wedm}}</td>
+        <td>{{form.wede}}</td>
+        <td>{{form.thum}}</td>
+        <td>{{form.thue}}</td>
+        <td>{{form.frim}}</td>
+        <td>{{form.frie}}</td>
+        <td>{{form.satm}}</td>
+        <td>{{form.sate}}</td>
+        <td>
+          <div class="p-2">
+            <form class="form" action="{% url 'update' form.id %}" method="post">
+              {% csrf_token %}
+                <button type="submit" class="btn btn-primary" name="upbtn">UPDATE</button>
+            </form>
+          </div>
+        </td>
+        <td>
+          <div class="p-2">
+            <form class="form" action="{% url 'delete' form.id %}" method="post">
+              {% csrf_token %}
+              <button type="submit" class="btn btn-primary" name="dltbtn">DELETE</button>
+            </form>
+            </div>
+        </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+    </table>
+    </div>
+  </div>
+</div>
+<br>
+<div class="d-flex justify-content-around mb-3">
+  <div class="p-2">
+    <form class="form" action="{% url 'add' %}" method="post">
+      {% csrf_token %}
+        <button type="submit" class="btn btn-primary" name="button">ADD NEW LAB</button>
+    </form>
+  </div>
+
+</div>
+{% endblock %}
+<!--<td>{{row.labName}}</td>
+<td>{{row.systems}}</td>
+<td>{{row.weekcls.mon.mrng}}</td>
+<td>{{row.weekcls.mon.evng}}</td>
+<td>{{row.weekcls.tues.mrng}}</td>
+<td>{{row.weekcls.tues.evng}}</td>
+<td>{{row.weekcls.wed.mrng}}</td>
+<td>{{row.weekcls.wed.evng}}</td>
+<td>{{row.weekcls.thurs.mrng}}</td>
+<td>{{row.weekcls.thurs.evng}}</td>
+<td>{{row.weekcls.fri.mrng}}</td>
+<td>{{row.weekcls.fri.evng}}</td>
+<td>{{row.weekcls.sat.mrng}}</td>
+<td>{{row.weekcls.sat.evng}}</td>-->
