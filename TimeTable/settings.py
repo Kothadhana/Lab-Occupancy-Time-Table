@@ -9,8 +9,9 @@ https://docs.djangoproject.com/en/3.2/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.2/ref/settings/
 """
-
+import django_heroku
 from pathlib import Path
+import dj_database_url
 import os
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -143,8 +144,8 @@ LOGIN_URL = "lg"
 LOGIN_REDIRECT_URL = "hme"
 #DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 # Configure Django App for Heroku.
-import django_heroku
+
 django_heroku.settings(locals())
-import dj_database_url
+
 prod_db  =  dj_database_url.config(conn_max_age=500)
 DATABASES['default'].update(prod_db)
