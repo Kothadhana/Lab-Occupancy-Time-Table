@@ -94,8 +94,8 @@ WSGI_APPLICATION = 'TimeTable.wsgi.application'
         'PORT': ''
     }
 }
-DATABASES['default'] = dj_database_url.config(conn_max_age=600)
-'''
+
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
@@ -104,7 +104,8 @@ DATABASES = {
         'PASSSWORD': 'system',
         'PORT': ''
     }
-}
+}'''
+DATABASES['default'] = dj_database_url.config(conn_max_age=600)
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators
 
