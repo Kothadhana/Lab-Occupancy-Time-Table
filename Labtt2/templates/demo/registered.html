@@ -1,0 +1,15 @@
+{% extends 'demo/base.html' %}
+{% block title %} Logout {% endblock %}
+{% block content %}
+<div class="container">
+	<div class="card col-md-6 mx-auto mt-5" style="text-align:center">
+		<br>
+		<h3> Registration Successful </h3>
+    <br>
+   <a href="{% url 'lg' %}" class="btn btn-primary mb-2">Login with other account</a>
+	 <br>
+	 <a href="{% url 'hme' %}">Go to home page</a>
+	 <br>
+	</div>
+</div>
+{% endblock content %}

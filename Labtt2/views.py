@@ -7,12 +7,15 @@ from Labtt2.forms import LabForm,UsRgt
 from django.contrib.auth.decorators import login_required
 
 @login_required
+def regd(request):
+	return(request,'demo/registered.html')
+@login_required
 def usrg(request):
 	if request.method == "POST":
 		t = UsRgt(request.POST)
 		if t.is_valid():
 			t.save()
-			return redirect('clab/login')
+			return render(request,'demo/registered.html')
 	t = UsRgt()
 	return render(request,'demo/registration.html',{'y':t})
 def home(request):

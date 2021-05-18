@@ -14,4 +14,5 @@ urlpatterns = [
 		path('login/', t.LoginView.as_view(template_name="demo/login.html"), name='lg'),
 		path("logout/",t.LogoutView.as_view(template_name="demo/logout.html"),name="lgo"),
 		path('reg/',views.usrg,name="ug"),
+		path('regd/',views.regd,name='reg'),
 ]
