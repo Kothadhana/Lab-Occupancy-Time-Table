@@ -7,7 +7,7 @@
 	<div class="card col-md-6 mx-auto mt-4 shadow-lg">
 		<div class="card-body">
 			<h3 class="bg-primary text-center text-light border rounded p-2">Registration</h3>
-			<form method="POST">
+			<form action="{% url 'ug' %}" method="POST">
 				{% csrf_token %}
 				<table class="table table-borderless">
 					{% for m in y %}

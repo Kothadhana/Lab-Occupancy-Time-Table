@@ -17,8 +17,12 @@
         <th scope="col" colspan="2">Thursday</th>
         <th scope="col" colspan="2">Friday</th>
         <th scope="col" colspan="2">Saturday</th>
-        <th scope="col"></th>
-        <th scope="col"></th>
+        {% if user.is_authenticated %}
+        <th scope="col">UPDATE</th>
+        <th scope="col">DELETE</th>
+        {% else %}
+        {% endif %}
+
       </tr>
       <tr class="bg-primary .color-white">
         <th scope="col" colspan="3"></th>
@@ -34,8 +38,12 @@
         <th scope="col">PM</th>
         <th scope="col">AM</th>
         <th scope="col">PM</th>
-        <th scope="col">UPDATE</th>
-        <th scope="col">DELETE</th>
+        {% if user.is_authenticated %}
+        <th scope="col"></th>
+        <th scope="col"></th>
+        {% else %}
+
+        {% endif %}
       </tr>
     </thead>
     <tbody>
@@ -56,6 +64,7 @@
         <td>{{form.frie}}</td>
         <td>{{form.satm}}</td>
         <td>{{form.sate}}</td>
+        {% if user.is_authenticated %}
         <td>
           <div class="p-2">
             <form class="form" action="{% url 'update' form.id %}" method="post">
@@ -72,7 +81,10 @@
             </form>
             </div>
         </td>
+        {% else %}
+        {% endif %}
       </tr>
+
       {% endfor %}
     </tbody>
     </table>
@@ -80,6 +92,7 @@
   </div>
 </div>
 <br>
+{% if user.is_authenticated %}
 <div class="d-flex justify-content-around mb-3">
   <div class="p-2">
     <form class="form" action="{% url 'add' %}" method="GET">
@@ -87,8 +100,9 @@
         <button type="submit" class="btn btn-primary" name="button">ADD NEW LAB</button>
     </form>
   </div>
-
 </div>
+{% else %}
+{% endif %}
 {% endblock %}
 <!--<td>{{row.labName}}</td>
 <td>{{row.systems}}</td>
