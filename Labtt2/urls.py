@@ -15,4 +15,5 @@ urlpatterns = [
 		path("logout/",t.LogoutView.as_view(template_name="demo/logout.html"),name="lgo"),
 		path('reg/',views.usrg,name="ug"),
 		path('regd/',views.regd,name='reg'),
+		path('search/',views.search,name="search")
 ]

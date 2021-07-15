@@ -2,15 +2,17 @@
 {% block title %} Login {% endblock %}
 {% block content %}
 <div class="container">
-    <div class="card col-md-6 mx-auto mt-5">
+    <div class="card col-md-6 mx-auto mt-5 shadow-lg">
         <div class="card-body" methhod="POST">
         	<form method="POST" action="">
             {% csrf_token %}
-            <h3 class="bg-primary text-light text-center border rounded p-2">Login</h3>
-            {{form.as_p}}
-            <input type="submit" value="login" class="btn btn-success btn-block"></input>
-            </form>
-            
+            <h3 class="bg-primary text-light text-center border rounded p-2">Sign In</h3>
+
+              {{form.as_p}}
+              <input type="submit" value="Login" class="btn btn-success btn-block"></input>
+          
+              </form>
+
         </div>
     </div>
 </div>

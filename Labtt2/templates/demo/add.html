@@ -2,9 +2,9 @@
 {% block title %} AddNewLab {% endblock %}
 
 {% block content %}
-<div class="container-fluid  bg-primary pt-5">
-  <h3 class="color-white"  style="text-align: center">Add new Lab Time Table</h3>
-  <div class="card col-md-8 mx-auto mt-5 px-5 py-5">
+<div class="container-fluid pt-5">
+  <h3 class="text-success"  style="text-align: center">Add new Lab Time Table</h3>
+  <div class="card col-md-8 mx-auto mt-5 px-5 py-5 shadow-lg">
     <form action="{% url 'add' %}" method="post">
     {% csrf_token %}
     <div class="form-group">
@@ -57,7 +57,7 @@
     <input id="sate" class="form-control" type="text" name="sate" value="" placeholder="Evening">
 
   </div>
-  <button type="submit" class="form-control btn btn-primary">ADD</button>
+  <button type="submit" class="form-control btn btn-success">ADD</button>
 
 </form>
   </div>

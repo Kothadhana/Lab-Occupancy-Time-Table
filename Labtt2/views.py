@@ -1,3 +1,4 @@
+from django.contrib import messages
 from django.shortcuts import render,redirect
 from .models import Listing
 from django.http import HttpResponseRedirect
@@ -5,7 +6,50 @@ from django.shortcuts import render
 from django.contrib.auth.models import User
 from Labtt2.forms import LabForm,UsRgt
 from django.contrib.auth.decorators import login_required
-
+def search(request):
+	res=""
+	if request.method=='POST':
+		lab=request.POST["lab"]
+		day=request.POST["day"]
+		day+=request.POST["session"]
+		form=Listing.objects.get(id=lab)
+		if (day=="monm"):
+			res=form.monm
+		elif(day=="mone"):
+			res=form.mone
+		elif(day=="tuem"):
+			res=form.tuem
+		elif(day=="tuee"):
+			res=form.tuee
+		elif(day=="wedm"):
+			res=form.wedm
+		elif(day=="wedme"):
+			res=form.wedee
+		elif(day=="thum"):
+			res=form.thum
+		elif(day=="thue"):
+			res=form.thue
+		elif(day=="frim"):
+			res=form.frim
+		elif(day=="sate"):
+			res=form.sate
+		forms=Listing.objects.all()
+		if(res!="None" and res!=""):
+			return render(request,'demo/search.html',{'forms':forms, 'msg':res});
+		else:
+			return render(request,'demo/search.html',{'forms':forms, 'no':day});
+		#return render(request,'demo/search.html', message='Save complete')
+		#if (form.day=="None" or form.day==""):
+			#messages.info(request, 'Lab is Vacant')
+		#else:
+			#messages.danger(request, 'Lab is occupied by form.day')
+		#return render('demo/search.html', message='res')
+		#return redirect('search')
+		#forms=Listing.objects.all()
+		#return render(request,'demo/search.html',{'forms':forms});
+	#else:
+	forms=Listing.objects.all()
+	return render(request,'demo/search.html',{'forms':forms});
 @login_required
 def regd(request):
 	return(request,'demo/registered.html')

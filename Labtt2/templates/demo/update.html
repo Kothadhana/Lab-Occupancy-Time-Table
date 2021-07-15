@@ -2,9 +2,9 @@
 {% block title %} Update {% endblock %}
 
 {% block content %}
-<div class="container-fluid  bg-primary pt-5">
-  <h3 class="color-white"  style="text-align: center">Update {{form.lab_name}} Lab Time Table</h3>
-  <div class="card col-md-8 mx-auto mt-5 px-5 py-5">
+<div class="container-fluid pt-5">
+  <h3 class="text-success"  style="text-align: center">Update {{form.lab_name}} Lab Time Table</h3>
+  <div class="card col-md-8 mx-auto mt-5 px-5 py-5  shadow-lg">
     <form action="{% url 'update' form.id %}" method="post">
     {% csrf_token %}
     <div class="form-group">
@@ -58,7 +58,7 @@
 
   </div>
 
-  <button type="submit" class="form-control btn btn-primary">UPDATE</button>
+  <button type="submit" class="form-control btn btn-success">UPDATE</button>
 
 </form>
   </div>

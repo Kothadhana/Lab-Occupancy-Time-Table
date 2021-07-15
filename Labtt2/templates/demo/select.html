@@ -4,10 +4,10 @@
 {% block content %}
 <div class="container-fluid .mt-5">
   <div class="mx-auto">
-    <div class="table-responsive table-primary" >
+    <div class="table-responsive table-success" >
     <table class="table" style="text-align:center">
     <thead>
-      <tr class="bg-primary">
+      <tr class="bg-success">
           <th scope="col" colspan="2">
               LAB NAME: {{form.lab_name}}
           </th>
@@ -15,68 +15,68 @@
             NO. OF SYSTEMS: {{form.systems}}
           </th>
         </tr>
-        <tr class="bg-primary">
+        <tr class="bg-success">
           <th>Day</th>
           <th>Morning<br/>9:30-12:30</th>
           <th>Evening<br/>1:30-4:30</th>
         </tr>
       </thead>
       <tbody>
-        <tr class="table-primary">
-          <th scope="row" class="bg-primary">Monday</th>
-          <td class="table-primary">
+        <tr class="table-success">
+          <th scope="row" class="bg-success">Monday</th>
+          <td class="table-success">
             {{form.monm}}
           </td>
-          <td class="table-primary">
+          <td class="table-success">
             {{form.mone}}
           </td>
 
         </tr>
         <tr >
-          <tr class="table-primary">
-            <th scope="row" class="bg-primary">Tuesday</th>
-            <td class="table-primary">
+          <tr class="table-success">
+            <th scope="row" class="bg-success">Tuesday</th>
+            <td class="table-success">
               {{form.tuem}}
             </td>
-            <td class="table-primary">
+            <td class="table-success">
                 {{form.tuee}}
             </td>
           </tr>
-        <tr class="table-primary">
-          <th scope="row" class="bg-primary">Wednesday</th>
-          <td class="table-primary">
+        <tr class="table-success">
+          <th scope="row" class="bg-success">Wednesday</th>
+          <td class="table-success">
             {{form.wedm}}
           </td>
-          <td class="table-primary">
+          <td class="table-success">
               {{form.wede}}
           </td>
         </tr>
-        <tr class="table-primary">
-          <th scope="row" class="bg-primary">Thursday</th>
+        <tr class="table-success">
+          <th scope="row" class="bg-success">Thursday</th>
 
-          <td class="table-primary">
+          <td class="table-success">
             {{form.thum}}
           </td>
-          <td class="table-primary">
+          <td class="table-success">
               {{form.thue}}
           </td>
 
         </tr>
-        <tr class="table-primary">
-          <th scope="row" class="bg-primary">Friday</th>
-          <td class="table-primary">
+        <tr class="table-success">
+          <th scope="row" class="bg-success">Friday</th>
+          <td class="table-success">
             {{form.frim}}
           </td>
-          <td class="table-primary">
+          <td class="table-success">
             {{form.frie}}
           </td>
         </tr>
-        <tr class="table-primary">
-          <th scope="row" class="bg-primary">Saturday</th>
-          <td class="table-primary">
+        <tr class="table-success">
+          <th scope="row" class="bg-success">Saturday</th>
+          <td class="table-success">
             {{form.satm}}
           </td>
-          <td class="table-primary">
+          <td class="table-success">
             {{form.sate}}
           </td>
         </tr>
@@ -89,16 +89,16 @@
 {% if user.is_authenticated %}
 <div class="d-flex justify-content-around mb-3">
   <div class="p-2">
-    <form class="form" action="{% url 'update' form.id %}" method="post">
+    <form class="form" action="{% url 'update' form.id %}" method="POST">
       {% csrf_token %}
-        <button type="submit" class="btn btn-primary" name="button">UPDATE</button>
+        <button type="submit" class="btn btn-success" name="button">UPDATE</button>
     </form>
   </div>
   <br>
   <div class="p-2">
     <form class="form" action="{% url 'delete' form.id %}" method="post">
       {% csrf_token %}
-    <button type="submit" class="btn btn-primary" name="button">DELETE</button>
+    <button type="submit" class="btn btn-success" name="button">DELETE</button>
         </form>
   </div>
 </div>
