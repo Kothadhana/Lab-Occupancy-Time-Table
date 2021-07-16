@@ -34,10 +34,10 @@ def search(request):
 		elif(day=="sate"):
 			res=form.sate
 		forms=Listing.objects.all()
-		if(res!="None" and res!=""):
-			return render(request,'demo/search.html',{'forms':forms, 'msg':res});
+		if(res=="None" or res==""):
+			return render(request,'demo/search.html',{'forms':forms,'no':day });
 		else:
-			return render(request,'demo/search.html',{'forms':forms, 'no':day});
+			return render(request,'demo/search.html',{'forms':forms,'msg':res});
 		#return render(request,'demo/search.html', message='Save complete')
 		#if (form.day=="None" or form.day==""):
 			#messages.info(request, 'Lab is Vacant')
