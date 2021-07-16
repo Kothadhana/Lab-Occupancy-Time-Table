@@ -23,18 +23,23 @@ def search(request):
 			res=form.tuee
 		elif(day=="wedm"):
 			res=form.wedm
-		elif(day=="wedme"):
-			res=form.wedee
+		elif(day=="wede"):
+			res=form.wede
 		elif(day=="thum"):
 			res=form.thum
 		elif(day=="thue"):
 			res=form.thue
 		elif(day=="frim"):
 			res=form.frim
+		elif(day=="frie"):
+			res=form.frie
+		elif(day=="satm"):
+			res=form.satm
 		elif(day=="sate"):
 			res=form.sate
 		forms=Listing.objects.all()
-		if(res=="None" or res==""):
+		res=res.strip()
+		if(res.upper()=="NONE" or res==""):
 			return render(request,'demo/search.html',{'forms':forms,'no':day });
 		else:
 			return render(request,'demo/search.html',{'forms':forms,'msg':res});
