@@ -38,8 +38,7 @@ def search(request):
 		elif(day=="sate"):
 			res=form.sate
 		forms=Listing.objects.all()
-		res=res.strip()
-		if(res.upper()=="NONE" or res==""):
+		if(res==None or res==""):
 			return render(request,'demo/search.html',{'forms':forms,'no':day });
 		else:
 			return render(request,'demo/search.html',{'forms':forms,'msg':res});
